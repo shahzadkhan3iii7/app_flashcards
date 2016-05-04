@@ -88,7 +88,7 @@ function deckListCreate() {
     //static entries
     elm.appendChild(createOptionNode('add', 'Add new'));
     elm.appendChild(createOptionNode('', '----------------'));
-    
+
     //dynamic entries
     for (var i=0 ; i<DECKMGR.length() ; i++) {
         var d = DECKMGR.deck_at_index(i);
@@ -189,7 +189,7 @@ function export_csv() {
 function eximExport() {
     var bb = new BlobBuilder;
     bb.append("Hello, world!");
-    saveAs(bb.getBlob("text/plain;charset=utf-8"), "hello world.txt");
+    saveAs(bb.getBlob("csv"), "export.csv");
 }
 
 function eximImport() {
@@ -209,7 +209,7 @@ function flip() {
         hotkeyDisable()
         if (document.getElementById('main').style.display == 'none') {
             $('#main-alt').toggle("slide", { direction: "down" }, 300);
-            setTimeout("$('#main').toggle('slide', {direction: 'up'}, 300)",300);      
+            setTimeout("$('#main').toggle('slide', {direction: 'up'}, 300)",300);
         } else {
             $('#main').toggle("slide", { direction: "up" }, 300);
             setTimeout("$('#main-alt').toggle('slide', {direction: 'down'}, 300)",300);
@@ -264,7 +264,7 @@ function isVisible(id) {
 
 //migrate a previous schema to current if needed
 function migrationCheck() {
-    
+
     //prior to OO design
     var c = localStorage["cards"];
     if (c) {
@@ -280,21 +280,21 @@ function migrationCheck() {
         deck.save();
         localStorage.removeItem("cards");
     }
-    
+
     //migrate to DeckMGR >= 0.6.2
     var deck = localStorage['deck'];
     if (deck) {
         DECKMGR = new DeckMGR('deckmgr');
-        
+
         //copy deck to new format
         var key = 'deck-'+makeKey();
         localStorage[key] = deck;
-        
+
         //set the name
         var d = new Deck(key);
         d.name = 'default';
         d.save();
-        
+
         //add to mgr and cleanup
         DECKMGR.deck_add(key);
         DECKMGR.deck_load(0);
@@ -438,11 +438,11 @@ function resetNo() {
 function save() {
   var phrase1 = document.getElementById('phrase-1').value;
   var phrase2 = document.getElementById('phrase-2').value;
-  
+
   if (!phrase1 || !phrase2) {
     return;
   }
-  
+
   var key = document.getElementById('key').value;
   var card;
   var msg = '';
@@ -459,7 +459,7 @@ function save() {
     DECKMGR.active().add(card);
     DECKMGR.active().save();
   }
-  
+
   cancel();
   updateDisplay();
   resetDisplay();
@@ -475,9 +475,9 @@ function saveDeck() {
     if (!name) {
         return;
     }
-    
+
     var index = document.getElementById('deck-key').value;
-    
+
     var d;
     if (index) {
         //edit
@@ -488,10 +488,10 @@ function saveDeck() {
         //add new
         index = DECKMGR.createDeck(name);
     }
-    
+
     //must load to update deckmgr instance
     DECKMGR.deck_load(index);
-    
+
     //update list
     updateDisplay();
     saveDeckCancel();
@@ -598,17 +598,17 @@ function updateDisplay(opts) {
         document.getElementById('main-alt').innerHTML = escape(card.phrase2);
         //document.getElementById('meter').innerHTML = card.points;
         document.getElementById('key').value = card.key;
-        
+
         setStats((DECKMGR.active().index+1) + ' / ' + DECKMGR.active().length());
     }
-    
+
     if (DECKMGR.mode_reverse) {
         if (DECKMGR.mode_animations) {
             $('#main-alt').show("slide", { direction: opts['direction'] }, 200);
         } else {
             show('main-alt');
         }
-        
+
     } else {
         if (DECKMGR.mode_animations) {
             $('#main').show("slide", { direction: opts['direction'] }, 200);
@@ -616,7 +616,7 @@ function updateDisplay(opts) {
             show('main');
         }
     }
-    
+
     updateOptions();
     hotkeyEnable();
 }
