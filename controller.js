@@ -195,12 +195,17 @@ function eximExport() {
 function eximImport() {
     hide('exim-button-container');
     show('exim-import-container');
+
 }
 
 // cancel file import
 function eximImportCancel() {
     hide('exim-import-container');
     show('exim-button-container');
+}
+
+function importSubmit(){
+
 }
 
 //display alternate phrase
