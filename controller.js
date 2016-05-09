@@ -188,7 +188,11 @@ function export_csv() {
 //current deck of cards
 function eximExport() {
     var bb = new BlobBuilder;
-    bb.append("Hello, world!");
+    for (var i=0 ; i<DECKMGR.active().length() ; i++) {
+        var c = DECKMGR.active().current();
+          bb.append('"'+escape(c.phrase1)+'","'+escape(c.phrase2)+'"\n');
+        DECKMGR.active().next();
+    }    
     saveAs(bb.getBlob("csv"), "export.csv");
 }
 
