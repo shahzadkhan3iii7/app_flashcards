@@ -190,11 +190,12 @@ function eximExport() {
     var bb = new BlobBuilder;
     for (var i=0 ; i<DECKMGR.active().length() ; i++) {
         var c = DECKMGR.active().current();
-console.log(c);
+        console.log(c.key);
           bb.append('"'+(c.phrase1)+'","'+(c.phrase2)+'"\n');
+
         DECKMGR.active().next();
     }
-    saveAs(bb.getBlob("csv"), "flashcards.csv");
+    saveAs(bb.getBlob("csv"), DECKMGR.active().name+".csv");
 }
 
 function eximImport() {
