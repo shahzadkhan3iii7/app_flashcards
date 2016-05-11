@@ -211,7 +211,10 @@ function eximImportCancel() {
 }
 
 function importSubmit(){
-
+  //calling import button
+  var csv = getElementById("import-file");
+  //setting an object to importId
+  JSON.stringify(csv);
 }
 
 //display alternate phrase
