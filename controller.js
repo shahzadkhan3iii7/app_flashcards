@@ -264,6 +264,7 @@ function drawOutput(lines){
 	}
 	document.getElementById("output").appendChild(table);
 }
+
 //display alternate phrase
 function flip() {
     if (DECKMGR.mode_animations) {
