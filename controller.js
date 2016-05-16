@@ -266,12 +266,14 @@ function drawOutput(lines){
 }
 // save import as deck
 function saveDeckfromCSV() {
-    var name = document.getElementById('csv').value;
+  console.log(document.getElementById('output'));
+  console.log(document.getElementById('output'));
+    var name = document.getElementById('csvFileInput').value;
     if (!name) {
         return;
     }
 
-    var index = document.getElementById('csv').value;
+    var index = document.getElementById('csvFileInput').value;
 
     var d;
     if (index) {
