@@ -264,7 +264,33 @@ function drawOutput(lines){
 	}
 	document.getElementById("output").appendChild(table);
 }
+// save import as deck
+function saveDeckfromCSV() {
+    var name = document.getElementById('csv').value;
+    if (!name) {
+        return;
+    }
 
+    var index = document.getElementById('csv').value;
+
+    var d;
+    if (index) {
+        //edit
+        d = DECKMGR.deck_at_index(index);
+        d.name = name;
+        d.save();
+    } else {
+        //add new
+        index = DECKMGR.createDeck(name);
+    }
+
+    //must load to update deckmgr instance
+    DECKMGR.deck_load(index);
+
+    //update list
+    updateDisplay();
+    saveDeckCancel();
+}
 //display alternate phrase
 function flip() {
     if (DECKMGR.mode_animations) {
