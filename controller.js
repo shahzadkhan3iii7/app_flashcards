@@ -267,7 +267,16 @@ function drawOutput(lines){
 // save import as deck
 function saveDeckfromCSV() {
   console.log(document.getElementById('output').innerText);
-  console.log(document.getElementById('csvFileInput').value);
+  var fullPath = document.getElementById('csvFileInput').value;
+  if (fullPath) {
+      var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+      var filename = fullPath.substring(startIndex);
+      if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+          filename = filename.substring(1);
+          deck = filename.split(".")[0];
+      }
+      alert(deck);
+  }
     var name = document.getElementById('output').innerText;
     if (!name) {
         return;
