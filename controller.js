@@ -267,7 +267,6 @@ function drawOutput(lines){
 // save import as deck
 function saveDeckfromCSV() {
   var fullPath = document.getElementById('csvFileInput').value;
-  var name;
 
   if (fullPath) {
       var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
@@ -277,26 +276,13 @@ function saveDeckfromCSV() {
       if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
           filename = filename.substring(1);
           name = filename.split(".")[0];
+          console.log(fullPath);
+          console.log(name);
+          console.log(index);
 
-          var d;
-          if (index) {
-              //edit
-              d = DECKMGR.deck_at_index(index);
-              d.name = name;
-              d.save();
-          } else {
-              //add new
-              index = DECKMGR.createDeck(name);
           }
-          //must load to update deckmgr instance
-          DECKMGR.deck_load(index);
-
-          //update list
-          updateDisplay();
-          saveDeckCancel();
+        }
       }
-  }
-}
 
 //display alternate phrase
 function flip() {
