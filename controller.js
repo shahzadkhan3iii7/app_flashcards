@@ -279,9 +279,31 @@ function saveDeckfromCSV() {
           console.log(output);
           var ndx = DECKMGR.createDeck(name);
           DECKMGR.deck_load(ndx);
-          }
-        updateDisplay();
+
+          // var phrase1 = document.getElementById('output').value;
+          // var phrase2 = document.getElementById('output').value;
+          //
+          // var key = ndx;
+          // var card;
+          // var msg = '';
+          // //key is set -> edit
+          // if (key) {
+          //   card = new Card({'key':key});
+          //   card.phrase1 = phrase1;
+          //   card.phrase2 = phrase2;
+          //   card.save();
+          //   //msg = 'Card updated';
+          // } else {
+          //   card = new Card({'phrase1':phrase1,'phrase2':phrase2});
+          //   card.save();
+          //   DECKMGR.active().add(card);
+          //   DECKMGR.active().save();
+          // }
+        }
+      updateDisplay();
       }
+      hide('exim-import-container');
+      show('exim-button-container');
     }
 
 //display alternate phrase
