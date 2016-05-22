@@ -276,12 +276,12 @@ function saveDeckfromCSV() {
       if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
           filename = filename.substring(1);
           name = filename.split(".")[0];
-          console.log(output);
+          console.log(output[0]);
           var ndx = DECKMGR.createDeck(name);
           DECKMGR.deck_load(ndx);
 
-          var phrase1 = document.getElementById('output').innerText;
-          var phrase2 = document.getElementById('output').innerText;
+          var phrase1 = output[0];
+          var phrase2 = output[1];
           var key = DECKMGR.active().current();
           var card;
           var msg = '';
