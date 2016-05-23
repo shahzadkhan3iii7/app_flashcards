@@ -243,6 +243,7 @@ function processData(csv) {
     }
 	console.log(lines);
 	drawOutput(lines);
+
 }
 
 function errorHandler(evt) {
@@ -271,14 +272,19 @@ function saveDeckfromCSV() {
   if (fullPath) {
       var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
       var filename = fullPath.substring(startIndex);
-      var output = document.getElementById('output').innerText;
+      var output = document.getElementById('output');
 
       if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
           filename = filename.substring(1);
           name = filename.split(".")[0];
-          console.log(output[0]);
+          console.log(output);
           var ndx = DECKMGR.createDeck(name);
           DECKMGR.deck_load(ndx);
+
+var tds = output.getElementsByTagName("td");
+for (var i = 0; i < tds.length; i++) {
+  alert(tds[i].innerHTML);
+}
 
           var phrase1 = output[0];
           var phrase2 = output[1];
