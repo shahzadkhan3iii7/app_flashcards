@@ -282,14 +282,15 @@ function saveDeckfromCSV() {
           DECKMGR.deck_load(ndx);
 
 var tds = output.getElementsByTagName("td");
-for (var i = 0; i < tds.length; i++) {
-  var aim = tds[i].innerHTML;
-  aim.replace(/['"]/g,'');
-  console.log(aim);
-asdfvasdfasdfasdfasdfasdf
+var e = [];
 
-          var phrase1 = tds[i].innerHTML;
-          var phrase2 = tds[i].innerHTML;
+for (var i = 0; i < tds.length; i++) {
+     e.push(tds[i].innerHTML);
+     var last = e[e.length-1];
+     console.log(last);
+
+          var phrase1 = last;
+          var phrase2 = last;
           var key = DECKMGR.active().current();
           var card;
           var msg = '';
