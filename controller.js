@@ -286,7 +286,7 @@ for (var i = 0; i < tds.length; i++) {
   var aim = tds[i].innerHTML;
   aim.replace(/['"]/g,'');
   console.log(aim);
-
+asdfvasdfasdfasdfasdfasdf
 
           var phrase1 = tds[i].innerHTML;
           var phrase2 = tds[i].innerHTML;
