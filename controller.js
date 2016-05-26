@@ -241,9 +241,10 @@ function processData(csv) {
     while (allTextLines.length) {
         lines.push(allTextLines.shift().split(','));
     }
+    lines.pop()
 	console.log(lines);
-	drawOutput(lines);
-
+	//drawOutput(lines);
+  document.getElementById('lines').value = lines;
 }
 
 function errorHandler(evt) {
@@ -273,24 +274,18 @@ function saveDeckfromCSV() {
       var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
       var filename = fullPath.substring(startIndex);
       var output = document.getElementById('output');
-
       if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
           filename = filename.substring(1);
           name = filename.split(".")[0];
-          console.log(output);
           var ndx = DECKMGR.createDeck(name);
           DECKMGR.deck_load(ndx);
 
-var tds = output.getElementsByTagName("td");
-var e = [];
+          var something = document.getElementById('lines').value;
+          console.log(something);
 
-for (var i = 0; i < tds.length; i++) {
-     e.push(tds[i].innerHTML);
-     var last = e[e.length-1];
-     console.log(last);
 
-          var phrase1 = last;
-          var phrase2 = last;
+          var phrase1 = something[0];
+          var phrase2 = something[1];
           var key = DECKMGR.active().current();
           var card;
           var msg = '';
@@ -307,7 +302,6 @@ for (var i = 0; i < tds.length; i++) {
             DECKMGR.active().add(card);
             DECKMGR.active().save();
           }
-        }
       updateDisplay();
       }
       hide('exim-import-container');
