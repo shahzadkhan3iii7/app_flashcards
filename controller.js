@@ -284,7 +284,18 @@ function saveDeckfromCSV() {
           var temp = new Array();
           temp = something.split(",");
           console.log(temp);
-
+          var o = [];
+          var e = [];
+          for (var i=0; i<temp.length;i++){
+            if ((i+2)%2==0){
+              e.push(temp[i]);
+            }else{
+              o.push(temp[i]);
+            }
+          }
+          console.log(o);
+          console.log("break");
+          console.log(e);
 
           var phrase1 = temp[0];
           var phrase2 = temp[1];
