@@ -281,11 +281,13 @@ function saveDeckfromCSV() {
           DECKMGR.deck_load(ndx);
 
           var something = document.getElementById('lines').value;
-          console.log(something);
+          var temp = new Array();
+          temp = something.split(",");
+          console.log(temp);
 
 
-          var phrase1 = something[0];
-          var phrase2 = something[1];
+          var phrase1 = temp[0];
+          var phrase2 = temp[1];
           var key = DECKMGR.active().current();
           var card;
           var msg = '';
