@@ -6,6 +6,7 @@
 
 // Contoller globals
 var DECKMGR;
+var LINES;
 
 //check for proper html5 support
 if (!Modernizr.localstorage) {
@@ -242,9 +243,9 @@ function processData(csv) {
         lines.push(allTextLines.shift().split(','));
     }
     lines.pop()
-	console.log(lines);
+	//console.log(lines);
+  LINES = lines;
 	//drawOutput(lines);
-  document.getElementById('lines').value = lines;
 }
 
 function errorHandler(evt) {
@@ -279,21 +280,14 @@ function saveDeckfromCSV() {
           name = filename.split(".")[0];
           var ndx = DECKMGR.createDeck(name);
           DECKMGR.deck_load(ndx);
+          //console.log(LINES);
 
-          var something = document.getElementById('lines').value;
-          var temp = new Array();
-          temp = something.split(",");
-          var o = [];
-          var e = [];
-          for (var i=0; i<temp.length;i++){
-            if ((i+2)%2==0){
-              e.push(temp[i]);
-            }else{
-              o.push(temp[i]);
-            }
-          }
-          var phrase1 = temp[0];
-          var phrase2 = temp[1];
+          for (i=0; i<LINES.length; i++){
+            console.log(LINES[i]);
+
+          var phrase1 = LINES[i][0];
+          var phrase2 = LINES[i][1];
+
           var key = DECKMGR.active().current();
           var card;
           var msg = '';
@@ -310,6 +304,7 @@ function saveDeckfromCSV() {
             DECKMGR.active().add(card);
             DECKMGR.active().save();
           }
+        }
       updateDisplay();
       }
       hide('exim-import-container');
