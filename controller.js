@@ -280,31 +280,15 @@ function saveDeckfromCSV() {
           name = filename.split(".")[0];
           var ndx = DECKMGR.createDeck(name);
           DECKMGR.deck_load(ndx);
-          //console.log(LINES);
-
           for (i=0; i<LINES.length; i++){
-            console.log(LINES[i]);
-
-          var phrase1 = LINES[i][0];
-          var phrase2 = LINES[i][1];
-
-          var key = DECKMGR.active().current();
-          var card;
-          var msg = '';
-          //key is set -> edit
-          if (key) {
-            card = new Card({'key':key});
-            card.phrase1 = phrase1;
-            card.phrase2 = phrase2;
-            card.save();
-            //msg = 'Card updated';
-          } else {
+            var phrase1 = LINES[i][0];
+            var phrase2 = LINES[i][1];
+            var card;
             card = new Card({'phrase1':phrase1,'phrase2':phrase2});
             card.save();
             DECKMGR.active().add(card);
             DECKMGR.active().save();
           }
-        }
       updateDisplay();
       }
       hide('exim-import-container');
