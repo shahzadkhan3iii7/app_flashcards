@@ -288,6 +288,7 @@ function saveDeckfromCSV() {
             card.save();
             DECKMGR.active().add(card);
             DECKMGR.active().save();
+            console.log(DECKMGR.active().cards);
           }
       updateDisplay();
       }
@@ -542,8 +543,8 @@ function save() {
   //key is set -> edit
   if (key) {
     card = new Card({'key':key});
-    card.phrase1 = phrase1;
-    card.phrase2 = phrase2;
+    card.phrase1 = decodeURI(phrase1);
+    card.phrase2 = decodeURI(phrase2);
     card.save();
     //msg = 'Card updated';
   } else {
