@@ -16,7 +16,7 @@ function Card(opts) {
         this.points = c.points;
         return;
     }
-    
+
     this.phrase1 = (opts.phrase1) ? opts.phrase1 : '';
     this.phrase2 = (opts.phrase2) ? opts.phrase2 : '';
     this.points = (opts.points) ? opts.points : 0;

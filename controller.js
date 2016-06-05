@@ -288,9 +288,10 @@ function saveDeckfromCSV() {
             card.save();
             DECKMGR.active().add(card);
             DECKMGR.active().save();
-            console.log(DECKMGR.active().cards);
           }
       updateDisplay();
+      var spaces = document.getElementById('main-alt');
+      decodeURI(spaces);
       }
       hide('exim-import-container');
       show('exim-button-container');
