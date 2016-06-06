@@ -310,10 +310,18 @@ function flip() {
             setTimeout("$('#main-alt').toggle('slide', {direction: 'down'}, 300)",300);
         }
         setTimeout('hotkeyEnable()', 300);
-    } else {
+          var spaces = document.getElementById('main-alt');
+          console.log(spaces);
+          spaces.replace(/%20/g, " ");
+          console.log(spaces);
+          } else {
         toggle('main');
         toggle('main-alt');
-    }
+          var spaces = document.getElementById('main-alt');
+          console.log(spaces);
+          spaces.replace(/%20/g, " ");
+          console.log(spaces);
+          }
 }
 
 function flipReset() {
