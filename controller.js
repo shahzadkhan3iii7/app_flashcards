@@ -290,8 +290,6 @@ function saveDeckfromCSV() {
             DECKMGR.active().save();
           }
       updateDisplay();
-      var spaces = document.getElementById('main-alt');
-      decodeURI(spaces);
       }
       hide('exim-import-container');
       show('exim-button-container');
@@ -311,17 +309,14 @@ function flip() {
         }
         setTimeout('hotkeyEnable()', 300);
           var spaces = document.getElementById('main-alt');
-          console.log(spaces.innerHTML);
           space = decodeURI(spaces.innerHTML);
           spaces.innerHTML = space
-          console.log(space);
           } else {
         toggle('main');
         toggle('main-alt');
           var spaces = document.getElementById('main-alt');
-          console.log(spaces);
-          space = decodeURI(spaces);
-          console.log(space);
+          space = decodeURI(spaces.innerHTML);
+          spaces.innerHTML = space
           }
 }
 
