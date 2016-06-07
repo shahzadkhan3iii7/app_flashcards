@@ -311,16 +311,17 @@ function flip() {
         }
         setTimeout('hotkeyEnable()', 300);
           var spaces = document.getElementById('main-alt');
-          console.log(spaces);
-          spaces.replace(/%20/g, " ");
-          console.log(spaces);
+          console.log(spaces.innerHTML);
+          space = decodeURI(spaces.innerHTML);
+          spaces.innerHTML = space
+          console.log(space);
           } else {
         toggle('main');
         toggle('main-alt');
           var spaces = document.getElementById('main-alt');
           console.log(spaces);
-          spaces.replace(/%20/g, " ");
-          console.log(spaces);
+          space = decodeURI(spaces);
+          console.log(space);
           }
 }
 
