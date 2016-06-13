@@ -693,8 +693,8 @@ function updateDisplay(opts) {
         //navShow();
         hide('msg-container');
         optionShow();
-        document.getElementById('main').innerHTML = escape(card.phrase1);
-        document.getElementById('main-alt').innerHTML = escape(card.phrase2);
+        var front = document.getElementById('main').innerHTML = decodeURI(card.phrase1);
+        var back = document.getElementById('main-alt').innerHTML = decodeURI(card.phrase2);
         //document.getElementById('meter').innerHTML = card.points;
         document.getElementById('key').value = card.key;
 
